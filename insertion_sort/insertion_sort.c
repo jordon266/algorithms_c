@@ -17,9 +17,15 @@ int* insertion_sort(int array[], int n){
 
 int main(){
 	int arr [] = {4,3,6,2,34,235,6,231};
-	printf("Printing Unsorted Array");
+	printf("Printing Unsorted Array\n");
 	for(int i =0;i < 8;i++){
 		printf("%d ",arr[i]);
+	}
+	printf("\nPrinting sorted Arrays\n");
+	int size = (sizeof(arr)/sizeof(arr[0]));
+	int * sorted_array = insertion_sort(arr,size);
+	for(int i = 0; i < size;i++){
+		printf("%d ",sorted_array[i]);
 	}
 	return 0;
 }	
