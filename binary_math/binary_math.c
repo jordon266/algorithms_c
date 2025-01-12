@@ -29,24 +29,24 @@ int bin_to_dec(int* array, int size){
 	}
 	return dec;
 }
-/* A recursive version of the binary to decimal conversion can be made will work on this in the future*/
-int rbin_to_dec(int array[], int size){
-	int index = size -1;
-	if(index == 0){
-		if(array[0] == 1){
-			return 1;
-		}
+/* A recursive version of the binary to decimal conversion can be made will work on this in the future
+	recursive function */
+int rbin_to_dec(int array[], int pow, int current_index){
+	
+	if(pow < 0){
 		return 0;
 	}
-	if(array[index] == 1){
-		return exponent(2,index) + rbin_to_dec(array,index);
+	if(array[current_index] == 1){
+		return exponent(2,pow) + rbin_to_dec(array,--pow,++current_index);
 	}
-	return rbin_to_dec(array,index);
+	return   rbin_to_dec(array,--pow,++current_index);
 }
 
 int main(){
-	int bin[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // binary representation of 9	
-	int size = SIZEOFARRAY(bin);
-	printf("%d ", rbin_to_dec(bin,size)); // should print the number 9
+	int bin[] = {1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0}; // 	binary representation of 57342
+	int end_index = SIZEOFARRAY(bin) - 1;
+	int start_index = 0;
+	int dec = rbin_to_dec(bin,end_index,start_index);
+	printf("%d ", end_index); // should print 57342
 	return 0;
 }
