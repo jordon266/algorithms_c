@@ -30,11 +30,23 @@ int bin_to_dec(int* array, int size){
 	return dec;
 }
 /* A recursive version of the binary to decimal conversion can be made will work on this in the future*/
+int rbin_to_dec(int array[], int size){
+	int index = size -1;
+	if(index == 0){
+		if(array[0] == 1){
+			return 1;
+		}
+		return 0;
+	}
+	if(array[index] == 1){
+		return exponent(2,index) + rbin_to_dec(array,index);
+	}
+	return rbin_to_dec(array,index);
+}
 
 int main(){
-	int bin[] = {1,1,1,1}; // binary representation of 9	
+	int bin[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // binary representation of 9	
 	int size = SIZEOFARRAY(bin);
-	printf("%d ", bin_to_dec(bin,size)); // should print the number 9
-	
+	printf("%d ", rbin_to_dec(bin,size)); // should print the number 9
 	return 0;
 }
