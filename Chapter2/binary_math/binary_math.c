@@ -30,23 +30,27 @@ int bin_to_dec(int* array, int size){
 	return dec;
 }
 /* A recursive version of the binary to decimal conversion can be made will work on this in the future
-	recursive function */
+	recursive function from observing the pseudocode in the textbook */
 int rbin_to_dec(int array[], int pow, int current_index){
 	
 	if(pow < 0){
 		return 0;
 	}
-	if(array[current_index] == 1){
-		return exponent(2,pow) + rbin_to_dec(array,--pow,++current_index);
-	}
-	return   rbin_to_dec(array,--pow,++current_index);
+	return (array[current_index] * exponent(2,pow)) + rbin_to_dec(array,--pow,++current_index);
 }
+// A function to add two binary numbers
+int* add_binary(int bin [], int bin2 []){
+	// to be completed
+	return NULL;
+}
+
+
 
 int main(){
 	int bin[] = {1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0}; // 	binary representation of 57342
 	int end_index = SIZEOFARRAY(bin) - 1;
 	int start_index = 0;
 	int dec = rbin_to_dec(bin,end_index,start_index);
-	printf("%d ", end_index); // should print 57342
+	printf("%d ", dec); // should print 57342
 	return 0;
 }
